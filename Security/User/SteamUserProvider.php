@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 /**
- * @author Knojector <dev@knojector.xyz>
+ * @author Knojector <dev@404-labs.xyz>
  */
 class SteamUserProvider implements UserProviderInterface
 {

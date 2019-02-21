@@ -6,15 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Role\Role;
 
-/**
- * @author Knojector <dev@knojector.xyz>
- */
+
 abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(type="bigint")
+     * @ORM\Column(type="integer")
      */
     protected $steamId;
 
@@ -75,9 +73,9 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
     protected $personaState;
 
     /**
-     * @var int|null
+     * @var string|null
      *
-     * @ORM\Column(type="bigint", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $primaryClanId;
 
@@ -112,6 +110,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
 
     /**
      * {@inheritdoc}
+     * @param integer
      */
     public function setSteamId(int $steamId)
     {
@@ -145,7 +144,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setProfileState(int $state)
+    public function setProfileState($state)
     {
         $this->profileState = $state;
     }
@@ -243,7 +242,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPersonaState(? int $state)
+    public function setPersonaState(?int $state)
     {
         $this->personaState = $state;
     }
@@ -259,7 +258,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
     /**
      * @param int|null $primaryClanId
      */
-    public function setPrimaryClanId(?int $primaryClanId): void
+    public function setPrimaryClanId($primaryClanId)
     {
         $this->primaryClanId = $primaryClanId;
     }
@@ -323,7 +322,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
      */
     public function getUsername()
     {
-       return $this->steamId;
+        return $this->steamId;
     }
 
     /**
@@ -333,7 +332,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
     {
         return;
     }
-    
+
     /**
      * @return array
      */
@@ -355,9 +354,7 @@ abstract class AbstractSteamUser implements SteamUserInterface, UserInterface
         $this->setProfileState($userData['profilestate']);
         $this->setProfileName($userData['personaname']);
         $this->setLastLogOff($userData['lastlogoff']);
-        $this->setCommentPermission(
-            isset($userData['commentpermission']) ? $userData['commentpermission'] : 0
-        );
+        $this->setCommentPermission($userData['commentpermission']);
         $this->setProfileUrl($userData['profileurl']);
         $this->setAvatar($userData['avatarfull']);
         $this->setPersonaState($userData['personastate']);

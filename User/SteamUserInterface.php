@@ -5,14 +5,14 @@ namespace Knojector\SteamAuthenticationBundle\User;
 /**
  * @see https://developer.valvesoftware.com/wiki/Steam_Web_API#GetPlayerSummaries_.28v0002.29
  *
- * @author Knojector <dev@knojector.xyz>
+ * @author Knojector <dev@404-labs.xyz>
  */
 interface SteamUserInterface
 {
     /**
      * @return int
      */
-    public function getSteamId(): int;
+    public function getSteamId();
 
     /**
      * @param int $steamId
@@ -107,7 +107,7 @@ interface SteamUserInterface
     /**
      * @param int $clanId
      */
-    public function setPrimaryClanId(int $clanId);
+    public function setPrimaryClanId($clanId);
 
     /**
      * @return \DateTime|null

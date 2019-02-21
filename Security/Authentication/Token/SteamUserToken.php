@@ -6,7 +6,7 @@ use Knojector\SteamAuthenticationBundle\User\AbstractSteamUser;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
- * @author Knojector <dev@knojector.xyz>
+ * @author Knojector <dev@404-labs.xyz>
  */
 class SteamUserToken implements TokenInterface
 {
@@ -81,7 +81,7 @@ class SteamUserToken implements TokenInterface
     /**
      * @param int $username
      */
-    public function setUsername(int $username)
+    public function setUsername($username)
     {
         $this->username = $username;
     }
@@ -91,7 +91,7 @@ class SteamUserToken implements TokenInterface
      */
     public function isAuthenticated()
     {
-       return $this->authenticated;
+        return $this->authenticated;
     }
 
     /**
