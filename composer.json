@@ -1,5 +1,5 @@
 {
-  "name": "knojector/steam-authentication-bundle",
+  "name": "cake/steam-authentication-bundle",
   "license": "MIT",
   "type": "symfony-bundle",
   "description": "Symfony Bundle to integrate Steam authentication",
@@ -10,7 +10,7 @@
     }
   ],
   "autoload": {
-    "psr-4": { "Knojector\\SteamAuthenticationBundle\\": "" }
+    "psr-4": { "Cake\\SteamAuthenticationBundle\\": "" }
   },
   "require": {
     "php": ">=7.1.3",
